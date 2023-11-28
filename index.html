@@ -168,6 +168,8 @@
                0% { opacity: 1; }
                100% { opacity: 0; }
            }
+
+
      </style>
 </head>
 
@@ -352,19 +354,33 @@
                     }
                });
           });
-
           [card1Ref, card2Ref, card3Ref, card4Ref, card5Ref, card6Ref, card7Ref, card8Ref, card9Ref, card10Ref].forEach((cardRef, index) => {
                cardRef.on('value', (snapshot) => {
                    const value = snapshot.val();
                    if (value === true) {
                        const card = document.querySelectorAll('.card')[index];
-                       card.style.animation = 'disappear 1s forwards';
-                       setTimeout(() => {
-                           card.style.display = 'none';
-                       }, 1000);
+                       if (!card.classList.contains('disappeared')) {
+                           card.classList.add('disappeared');
+                           card.style.animation = 'disappear 1s forwards';
+                           setTimeout(() => {
+                               card.style.display = 'none';
+                           }, 1000);
+                       }
                    }
                });
            });
+           
+           window.onload = () => {
+               [card1Ref, card2Ref, card3Ref, card4Ref, card5Ref, card6Ref, card7Ref, card8Ref, card9Ref, card10Ref].forEach((cardRef, index) => {
+                   cardRef.once('value', (snapshot) => {
+                       const value = snapshot.val();
+                       if (value === true) {
+                           const card = document.querySelectorAll('.card')[index];
+                           card.style.display = 'none';
+                       }
+                   });
+               });
+           };
 
 
      </script>
