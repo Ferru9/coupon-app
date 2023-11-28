@@ -35,7 +35,7 @@
                border-radius: 15px;
                padding: 20px;
                margin: 10px;
-               width: 50%;
+               width: 80%;
                background-color: #FF6B6B;
                box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
                transition: all 0.3s ease-in-out;
@@ -161,7 +161,7 @@
           }
 
           #page-content {
-               display: none;
+               /*display: none;*/
                /* Initially hidden */
           }
           @keyframes disappear {
@@ -173,11 +173,11 @@
 
 
 <body>
-     <form id="login-form">
+     <!-- <form id="login-form">
           <input type="email" id="email" placeholder="Email">
           <input type="password" id="password" placeholder="Password">
           <button type="submit">Log in</button>
-     </form>
+     </form> -->
 
 
 
@@ -185,7 +185,7 @@
      <div id="page-content">
           <header>
                <h1 style="font-weight: 900;">Cupones Especiales</h1>
-               <button id="logout-button" style="display: none;">Log out</button>
+               <!-- <button id="logout-button" style="display: none;">Log out</button> -->
           </header>
 
           <div class="container">
@@ -282,7 +282,7 @@
 
           const auth = firebase.auth();
 
-          document.getElementById('login-form').addEventListener('submit', event => {
+      /*    document.getElementById('login-form').addEventListener('submit', event => {
                event.preventDefault();
                const email = document.getElementById('email').value;
                const password = document.getElementById('password').value;
@@ -303,7 +303,7 @@
                          document.getElementById('page-content').style.display = 'none'; // Hide content on logout
                     })
                     .catch(error => console.error(error));
-          });
+          });*/
 
 
           document.querySelectorAll('.card input[type="checkbox"]').forEach(input => {
