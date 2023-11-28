@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <style>
+          @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+          body {
+               background-color: #282a36;
+               font-family: 'Handlee', cursive;
+          }
+
+          header {
+               background-color: #FF6B6B;
+               padding: 20px;
+               text-align: center;
+               color: #f8f8f2;
+               position: relative;
+          }
+
+          header h1 {
+               font-size: 2.5em;
+               margin: 0;
+          }
+
+          .container {
+               display: flex;
+               flex-wrap: wrap;
+               justify-content: space-around;
+               padding: 10px;
+          }
+
+          .card {
+               border: 1px solid #FF6B6B;
+               border-radius: 15px;
+               padding: 20px;
+               margin: 10px;
+               width: 50%;
+               background-color: #FF6B6B;
+               box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+               transition: all 0.3s ease-in-out;
+               color: #f8f8f2;
+               font-size: 1.2em;
+          }
+
+          .card:hover {
+               transform: scale(1.03);
+          }
+
+          .card.checked {
+               background-color: #34495e;
+               text-decoration: line-through;
+          }
+
+          .card label {
+               display: flex;
+               flex-direction: row;
+               align-items: center;
+               justify-content: space-between;
+               width: 100%;
+               height: 100%;
+          }
+
+          .card img {
+               width: 50px;
+               height: 50px;
+               order: 2;
+          }
+
+          .card p {
+               flex-grow: 1;
+               margin-right: 10px;
+          }
+
+          .card input[type="checkbox"] {
+               position: relative;
+               opacity: 0;
+               width: 25px;
+               height: 25px;
+          }
+
+          .card input[type="checkbox"]::before {
+               content: "";
+               position: absolute;
+               top: 0;
+               left: 0;
+               width: 25px;
+               height: 25px;
+               border: 2px solid #f8f8f2;
+               border-radius: 50%;
+               background: transparent;
+          }
+
+          .card input[type="checkbox"]:checked::before {
+               background: #34495e;
+          }
+
+
+          #login-form {
+               position: absolute;
+               top: 50%;
+               left: 50%;
+               transform: translate(-50%, -50%);
+               background-color: #FF6B6B;
+               padding: 40px;
+               border-radius: 8px;
+               box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+               max-width: 300px;
+               width: 100%;
+               text-align: center;
+          }
+
+          #login-form input,
+          #login-form button {
+               width: 90%;
+               padding: 15px;
+               margin-bottom: 15px;
+               border: none;
+               border-radius: 4px;
+               font-size: 16px;
+               /* Adjust font size */
+          }
+
+          #login-form input {
+               background-color: #fff;
+               box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+          }
+
+          #login-form button {
+               background-color: #34495e;
+               /* Changed to a more subtle color */
+               color: white;
+               font-weight: 500;
+               /* Slightly bolder */
+               cursor: pointer;
+               transition: background-color 0.3s;
+          }
+
+          #login-form button:hover {
+               background-color: #2c3e50;
+               /* Darker shade on hover */
+          }
+
+          #logout-button {
+               padding: 10px 20px;
+               background-color: #FF6B6B;
+               color: #f8f8f2;
+               border: none;
+               border-radius: 5px;
+               cursor: pointer;
+               font-size: 1em;
+               transition: background-color 0.3s ease;
+               border: #ffffff solid 2px;
+               position: absolute;
+               top: 10px;
+               right: 10px;
+          }
+
+          #logout-button:hover {
+               background-color: #ff8b8b;
+          }
+
+          #page-content {
+               display: none;
+               /* Initially hidden */
+          }
+          @keyframes disappear {
+               0% { opacity: 1; }
+               100% { opacity: 0; }
+           }
+     </style>
+</head>
+
+
+<body>
+     <form id="login-form">
+          <input type="email" id="email" placeholder="Email">
+          <input type="password" id="password" placeholder="Password">
+          <button type="submit">Log in</button>
+     </form>
+
+
+
+     <!-- Wrapped content inside a div with an id -->
+     <div id="page-content">
+          <header>
+               <h1 style="font-weight: 900;">Cupones Especiales</h1>
+               <button id="logout-button" style="display: none;">Log out</button>
+          </header>
+
+          <div class="container">
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="foot-massage.png" alt="Image placeholder">
+                         <p>Masaje de pies a cualquier hora</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="bag.png" alt="Image placeholder">
+                         <p>Ir de shopping conmigo budget 100$</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="cosmetics.png" alt="Image placeholder">
+                         <p>Ir a sephora budget 50$</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="body-massage.png" alt="Image placeholder">
+                         <p>Masaje cuerpo completo</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="fast-food.png" alt="Image placeholder">
+                         <p>Invitarte a comer</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="focus.png" alt="Image placeholder">
+                         <p>Atencion 100% a ti</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="picnic-basket.png" alt="Image placeholder">
+                         <p>Tener un picnic en el parque</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="watching-a-movie.png" alt="Image placeholder">
+                         <p>Ver una pelicula que tu quieras sin que yo me duerma</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="double-bed.png" alt="Image placeholder">
+                         <p>Una noche especial(delicioso jaja)</p>
+                    </label>
+               </div>
+               <div class="card">
+                    <label>
+                         <input type="checkbox">
+                         <img src="kiss.png" alt="Image placeholder">
+                         <p>Muchos besitos a cualquier hora</p>
+                    </label>
+               </div>
+
+
+          </div>
+     </div>
+     <!-- Firebase Initialization -->
+     <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase-auth.js"></script>
+     <script>
+
+
+          const firebaseConfig = {
+               apiKey: "AIzaSyDWpluMMA-W-ZrNodsXXH00xJbQtjlPdgY",
+               authDomain: "andys-birthday-gift.firebaseapp.com",
+               databaseURL: "https://andys-birthday-gift-default-rtdb.firebaseio.com",
+               projectId: "andys-birthday-gift",
+               storageBucket: "andys-birthday-gift.appspot.com",
+               messagingSenderId: "931539730131",
+               appId: "1:931539730131:web:822087a66996f962019e26"
+          };
+          firebase.initializeApp(firebaseConfig);
+
+          const auth = firebase.auth();
+
+          document.getElementById('login-form').addEventListener('submit', event => {
+               event.preventDefault();
+               const email = document.getElementById('email').value;
+               const password = document.getElementById('password').value;
+               auth.signInWithEmailAndPassword(email, password)
+                    .then(() => {
+                         document.getElementById('login-form').style.display = 'none';
+                         document.getElementById('logout-button').style.display = 'block';
+                         document.getElementById('page-content').style.display = 'block'; // Show content on login
+                    })
+                    .catch(error => console.error(error));
+          });
+
+          document.getElementById('logout-button').addEventListener('click', () => {
+               auth.signOut()
+                    .then(() => {
+                         document.getElementById('login-form').style.display = 'block';
+                         document.getElementById('logout-button').style.display = 'none';
+                         document.getElementById('page-content').style.display = 'none'; // Hide content on logout
+                    })
+                    .catch(error => console.error(error));
+          });
+
+
+          document.querySelectorAll('.card input[type="checkbox"]').forEach(input => {
+               input.addEventListener('change', function () {
+                    this.closest('.card').classList.toggle('checked', this.checked);
+               });
+          });
+
+
+          const db = firebase.database();
+          const card1Ref = db.ref('card1');
+          const card2Ref = db.ref('card2');
+          const card3Ref = db.ref('card3');
+          const card4Ref = db.ref('card4');
+          const card5Ref = db.ref('card5');
+          const card6Ref = db.ref('card6');
+          const card7Ref = db.ref('card7');
+          const card8Ref = db.ref('card8');
+          const card9Ref = db.ref('card9');
+          const card10Ref = db.ref('card10');
+
+          document.querySelectorAll('.card').forEach((card, index) => {
+               card.addEventListener('change', (event) => {
+                    if (event.target.checked) {
+                         if (index === 0) {
+                              card1Ref.set(true);
+                         } else if (index === 1) {
+                              card2Ref.set(true);
+                         } else if (index === 2) {
+                              card3Ref.set(true);
+                         } else if (index === 3) {
+                              card4Ref.set(true);
+                         } else if (index === 4) {
+                              card5Ref.set(true);
+                         } else if (index === 5) {
+                              card6Ref.set(true);
+                         } else if (index === 6) {
+                              card7Ref.set(true);
+                         } else if (index === 7) {
+                              card8Ref.set(true);
+                         } else if (index === 8) {
+                              card9Ref.set(true);
+                         } else if (index === 9) {
+                              card10Ref.set(true);
+                         }
+                    }
+               });
+          });
+
+          [card1Ref, card2Ref, card3Ref, card4Ref, card5Ref, card6Ref, card7Ref, card8Ref, card9Ref, card10Ref].forEach((cardRef, index) => {
+               cardRef.on('value', (snapshot) => {
+                   const value = snapshot.val();
+                   if (value === true) {
+                       const card = document.querySelectorAll('.card')[index];
+                       card.style.animation = 'disappear 1s forwards';
+                       setTimeout(() => {
+                           card.style.display = 'none';
+                       }, 1000);
+                   }
+               });
+           });
+
+
+     </script>
+</body>
+
+</html>
